@@ -1,0 +1,41 @@
+[Untitled-27.html](https://github.com/user-attachments/files/32796236/Untitled-27.html)
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 27 - Xóa dòng trong Table</title>
+</head>
+<body>
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>Số lượng</th>
+                <th>Đơn giá</th>
+                <th>Tổng</th>
+                <th>Chức năng</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2</td>
+                <td>1000000</td>
+                <td>2000000</td>
+                <td><button onclick="deleteRow(this)">Xóa</button></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>500000</td>
+                <td>500000</td>
+                <td><button onclick="deleteRow(this)">Xóa</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function deleteRow(btn) {
+            let row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script>
+</body>
+</html>
