@@ -1,0 +1,36 @@
+[Untitled-26.html](https://github.com/user-attachments/files/32796215/Untitled-26.html)
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 26 - Tính Can Chi</title>
+</head>
+<body>
+    <h3>TÍNH CAN CHI CỦA NĂM ÂM LỊCH</h3>
+    Năm dương lịch: 
+    <input type="text" id="yearInput" value="2015">
+    <button onclick="tinhCanChi()">---></button>
+    Can chi năm âm lịch: 
+    <input type="text" id="result" readonly>
+
+    <script>
+        function tinhCanChi() {
+            let yearVal = document.getElementById("yearInput").value.trim();
+            let year = parseInt(yearVal);
+
+            if (yearVal === "" || isNaN(year) || year < 0) {
+                alert("Vui lòng nhập một năm hợp lệ!");
+                return;
+            }
+
+            let can = ["Canh", "Tân", "Nhâm", "Quý", "Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ"];
+            let chi = ["Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu", "Dần", "Mẹo", "Thìn", "Tỵ", "Ngọ", "Mùi"];
+
+            let strCan = can[year % 10];
+            let strChi = chi[year % 12];
+
+            document.getElementById("result").value = `${strCan} ${strChi}`;
+        }
+    </script>
+</body>
+</html>
