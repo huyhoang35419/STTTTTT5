@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 22 - Máy tính nhân chia</title>
+</head>
+<body>
+    1st Number: <input type="number" id="num1" value="12"><br><br>
+    2nd Number: <input type="number" id="num2" value="10"><br><br>
+    <button onclick="multiply()">Multiply</button>
+    <button onclick="divide()">Divide</button>
+
+    <p>The Result Is : <br><span id="result" style="font-weight: bold;"></span></p>
+
+    <script>
+        function multiply() {
+            let n1 = parseFloat(document.getElementById("num1").value);
+            let n2 = parseFloat(document.getElementById("num2").value);
+            document.getElementById("result").innerText = n1 * n2;
+        }
+
+        function divide() {
+            let n1 = parseFloat(document.getElementById("num1").value);
+            let n2 = parseFloat(document.getElementById("num2").value);
+            if (n2 === 0) {
+                document.getElementById("result").innerText = "Không thể chia cho 0";
+            } else {
+                document.getElementById("result").innerText = n1 / n2;
+            }
+        }
+    </script>
+</body>
+</html>

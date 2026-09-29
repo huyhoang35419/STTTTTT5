@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 25 - Thực đơn tính tiền</title>
+    <style>
+        .menu-container { border: 2px solid #000; width: 450px; padding: 10px; }
+        .row { display: flex; justify-content: space-between; }
+        .col { width: 48%; }
+    </style>
+</head>
+<body>
+<div class="menu-container">
+    <h3 style="text-align: center;">THỰC ĐƠN</h3>
+    <div class="row">
+        <div class="col">
+            <b>Thức ăn</b><br>
+            <select id="thucAn" multiple size="5" style="width: 100%;">
+                <option value="20000">Bún bò</option>
+                <option value="18000">Hủ tiếu</option>
+                <option value="17000">Bánh canh</option>
+                <option value="15000">Nuôi</option>
+                <option value="19000">Phở bò</option>
+                <option value="12000">Bánh mì thịt</option>
+                <option value="15000">Bánh cuốn</option>
+            </select>
+        </div>
+        <div class="col">
+            <b>Nước uống</b><br>
+            <select id="nuocUong" multiple size="5" style="width: 100%;">
+                <option value="12000">Cà phê đá</option>
+                <option value="15000">Cà phê sữa đá</option>
+                <option value="13000">Chanh dây</option>
+                <option value="12000">Chanh muối</option>
+                <option value="14000">Xí muội</option>
+                <option value="13000">Sữa tươi</option>
+                <option value="17000">Cam vắt</option>
+            </select>
+        </div>
+    </div>
+    <br>
+    <b>Thời điểm:</b>
+    <input type="radio" name="time" value="day" checked> Ban ngày
+    <input type="radio" name="time" value="night"> Ban đêm (Tăng 10%)
+    <br><br>
+    <button onclick="tinhTien()">Tính tiền</button>
+    <hr>
+    <b>Các món đã dùng:</b>
+    <div id="selectedItems"></div>
+    <br>
+    <b>Tổng tiền: </b> <span id="totalPrice" style="color: red; font-weight: bold;">0</span> đồng
+</div>
+
+<script>
+    function tinhTien() {
+        let total = 0;
+        let htmlList = "<table border='1' width='100%'><tr><th>Món</th><th>Tiền</th></tr>";
+
+        // Xử lý thức ăn
+        let thucAnSelect = document.getElementById("thucAn");
+        for (let opt of thucAnSelect.selectedOptions) {
+            let price = parseInt(opt.value);
+            total += price;
+            htmlList += `<tr><td>${opt.text}</td><td>${price}</td></tr>`;
+        }
+
+        // Xử lý nước uống
+        let nuocUongSelect = document.getElementById("nuocUong");
+        for (let opt of nuocUongSelect.selectedOptions) {
+            let price = parseInt(opt.value);
+            total += price;
+            htmlList += `<tr><td>${opt.text}</td><td>${price}</td></tr>`;
+        }
+        htmlList += "</table>";
+
+        // Tăng 10% nếu là ban đêm
+        let isNight = document.querySelector('input[name="time"]:checked').value === "night";
+        if (isNight) {
+            total = total * 1.1;
+        }
+
+        document.getElementById("selectedItems").innerHTML = htmlList;
+        document.getElementById("totalPrice").innerText = total.toLocaleString();
+    }
+</script>
+</body>
+</html>

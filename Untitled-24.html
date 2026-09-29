@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 24 - Tìm thứ trong tuần</title>
+</head>
+<body>
+    Ngày <input type="number" id="day" value="12" style="width: 50px;">
+    Tháng 
+    <select id="month">
+        <script>
+            for(let i=1; i<=12; i++) {
+                document.write(`<option value="${i}">${i}</option>`);
+            }
+        </script>
+    </select>
+    Năm <input type="number" id="year" value="2015" style="width: 70px;">
+    <button onclick="xuatThu()">Xuất thứ</button>
+    <br><br>
+    <div id="output" style="font-weight: bold; color: blue;"></div>
+
+    <script>
+        function xuatThu() {
+            let d = parseInt(document.getElementById("day").value);
+            let m = parseInt(document.getElementById("month").value) - 1;
+            let y = parseInt(document.getElementById("year").value);
+
+            let dateObj = new Date(y, m, d);
+            let days = ["Chủ Nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"];
+
+            let strThu = days[dateObj.getDay()];
+            document.getElementById("output").innerText = `${strThu} Ngày ${d} tháng ${m + 1} năm ${y}`;
+        }
+    </script>
+</body>
+</html>
